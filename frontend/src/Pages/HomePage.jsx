@@ -25,9 +25,11 @@ const HomePage = () => {
     return (
         <div><Title title="Home Page" />
             <div className='backgroundHomePage'>
+                <img style={{ width: "100%" }} src="https://m.media-amazon.com/images/I/81d5OrWJAkL.SX3000.jpg" alt='background image'></img>
+            </div>
+            <div className='products'>
 
             </div>
-            HomePage
         </div>
     )
 }
