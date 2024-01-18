@@ -15,8 +15,10 @@ app.use(express.urlencoded({ extended: false })); // mainly for working with fro
 
 const PORT = process.env.PORT || 8080; // set 8080 for default port name if it does not exist in the env
 
-// routes
+// api routes
 app.use('/api/v1/seed', seedRouter);
+app.use('/api/v1/products', seedRouter);
+
 app.use((err, req, res, next) => { // for when the entered route does not exist
     res.status(500).send({ message: err.message })
 })
