@@ -3,6 +3,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import User from "./models/User.js";
 import dotenv from "dotenv";
+import seedRouter from "./routes/seedRouter.js";
 
 const app = express();
 
@@ -15,6 +16,11 @@ app.use(express.urlencoded({ extended: false })); // mainly for working with fro
 const PORT = process.env.PORT || 8080; // set 8080 for default port name if it does not exist in the env
 
 // routes
+app.use('/api/v1/seed', seedRouter);
+app.use((err, req, res, next) => { // for when the entered route does not exist
+    res.status(500).send({ message: err.message })
+})
+
 // app.post('/addUser', async (req, res) => { // async function because we are interacting with the DB
 //     // const user = req.body.user;
 //     //const { user } = req.body;
