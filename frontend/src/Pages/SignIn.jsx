@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import axios from "axios"
 import Container from "react-bootstrap/Container"
 import Title from "../Components/Shared/Title"
@@ -6,16 +6,20 @@ import Form from "react-bootstrap/Form"
 import { Button, Link, toast } from "../imports"
 import { getError } from "../utils"
 import { useNavigate } from "react-router-dom"
+import { Store } from "../Store"
+import { USER_SIGNIN } from "../actions"
 
 const SignIn = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const navigate = useNavigate();
+    const { dispatch: ctxDispatch } = useContext(Store)
 
     const submitHandler = async (e) => {
         e.preventDefault()
         try {
             const { data } = await axios.post("/api/v1/users/signin", { email: email, password: password });
+            ctxDispatch({ type: USER_SIGNIN, payload: data });
             localStorage.setItem("userInfo", JSON.stringify(data));
             navigate("/");
         } catch (error) {

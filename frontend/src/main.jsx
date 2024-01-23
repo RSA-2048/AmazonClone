@@ -5,13 +5,16 @@ import App from './App.jsx'
 import './index.css'
 import { HelmetProvider } from 'react-helmet-async'
 import axios from 'axios'
+import { StoreProvider } from './Store.jsx'
 
 axios.defaults.baseURL = 'http://localhost:8080'; // Change this to server once we have one in production or import from .env
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <HelmetProvider>
-      <App />
-    </HelmetProvider>
+    <StoreProvider>
+      <HelmetProvider>
+        <App />
+      </HelmetProvider>
+    </StoreProvider>
   </React.StrictMode>,
 )
