@@ -15,5 +15,6 @@ import Form from "react-bootstrap/Form"
 import InputGroup from "react-bootstrap/InputGroup"
 import FormControl from "react-bootstrap/FormControl"
 import { Helmet } from 'react-helmet-async'
+import { toast } from 'react-toastify'
 
-export { useState, useReducer, axios, Container, PropTypes, Card, Button, Link, Row, Col, NavBar, LinkContainer, Spinner, Alert, Form, InputGroup, FormControl, Helmet };
+export { useState, useReducer, axios, Container, PropTypes, Card, Button, Link, Row, Col, NavBar, LinkContainer, Spinner, Alert, Form, InputGroup, FormControl, Helmet, toast };
