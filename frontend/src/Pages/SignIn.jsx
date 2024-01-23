@@ -25,8 +25,8 @@ const SignIn = () => {
         } catch (error) {
             toast.error(getError(error));
         }
-
     }
+
     return (
         <Container className="small-container">
             <Title title="SignIn Page" />

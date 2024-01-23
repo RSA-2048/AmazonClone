@@ -6,10 +6,16 @@ import { Link } from 'react-router-dom';
 import SearchBox from './SearchBox';
 import { NavDropdown } from '../../imports';
 import { Store } from '../../Store';
+import { USER_SIGNOUT } from '../../actions';
 
 const Header = () => {
-    const { state } = useContext(Store);
+    const { state, dispatch: ctxDispatch } = useContext(Store);
     const { userInfo } = state;
+
+    const signOutHandler = () => {
+        ctxDispatch({ type: USER_SIGNOUT });
+        localStorage.removeItem('userInfo');
+    }
 
     return (
         <header>
@@ -29,7 +35,7 @@ const Header = () => {
                     {userInfo ? (
                         <NavDropdown className='text-white' title={userInfo.name}>
                             <NavDropdown.Divider />
-                            <Link to='#signout' className='dropdown item'>Sign Out</Link>
+                            <Link to='#signout' onClick={signOutHandler} className='dropdown item'>Sign Out</Link>
                         </NavDropdown>
                     ) : <Link to='/signin' className='text-white nav-link'>Sign In</Link>}
                 </Container>
