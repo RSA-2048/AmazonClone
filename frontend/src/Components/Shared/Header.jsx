@@ -4,17 +4,20 @@ import Container from 'react-bootstrap/Container';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from 'react-router-dom';
 import SearchBox from './SearchBox';
-import { NavDropdown } from '../../imports';
+import { Badge, NavDropdown } from '../../imports';
 import { Store } from '../../Store';
 import { USER_SIGNOUT } from '../../actions';
 
 const Header = () => {
     const { state, dispatch: ctxDispatch } = useContext(Store);
-    const { userInfo } = state;
+    const { userInfo, cart: { cartItems } } = state;
 
     const signOutHandler = () => {
         ctxDispatch({ type: USER_SIGNOUT });
         localStorage.removeItem('userInfo');
+        localStorage.removeItem('cartItems');
+        localStorage.removeItem('shippingAdress');
+        localStorage.removeItem('paymentMethod');
     }
 
     return (
@@ -30,12 +33,17 @@ const Header = () => {
                     <nav className='d-flex align-items-center justify-content-end me-2 ms-4'>
                         <Link to="/cart" className='nav-link'>
                             <i className='fa fa-shopping-cart text-white'></i>
+                            {cartItems.length > 0 && (
+                                <Badge pill bg="danger">
+                                    {cartItems.reduce((a, c) => a + c.quantity, 0)}
+                                </Badge>
+                            )}
                         </Link>
                     </nav>
                     {userInfo ? (
                         <NavDropdown className='text-white' title={userInfo.name}>
                             <NavDropdown.Divider />
-                            <Link to='#signout' onClick={signOutHandler} className='dropdown item'>Sign Out</Link>
+                            <Link to='#signout' onClick={signOutHandler} className='dropdown-item'>Sign Out</Link>
                         </NavDropdown>
                     ) : <Link to='/signin' className='text-white nav-link'>Sign In</Link>}
                 </Container>

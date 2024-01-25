@@ -8,7 +8,7 @@ const storeReducer = (state, action) => {
         case USER_SIGNOUT: {
             // local storage remove item 
             // set user context to null
-            return { ...state, userInfo: null };
+            return { ...state, userInfo: null, cart: { cartItems: [], shippingAdress: [], paymentMethod: "" } };
         }
         case ADD_TO_CART: {
             const newItem = action.payload;
