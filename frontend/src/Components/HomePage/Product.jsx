@@ -9,8 +9,7 @@ import { addToCartHandler } from '../../utils';
 
 const Product = ({ product }) => {
     const { state, dispatch: ctxDispatch } = useContext(Store);
-    const { cart } = state
-    const { cartItems } = cart;
+    const { cart: { cartItems } } = state;
 
     return (
         <Card className='product-card mb-4'>
@@ -24,7 +23,7 @@ const Product = ({ product }) => {
                 <Rating rating={product.rating.rate} numReviews={product.rating.count} />
                 <Card.Text>${product.price}</Card.Text>
                 {product.countInStock === 0 ? <Button variant='light' disabled>Out of Stock</Button> :
-                    <Button className='btn-primary' onClick={() => { addToCartHandler(product, cartItems, ctxDispatch) }}>Add to Cart</Button>}
+                    <Button className='btn-primary' onClick={() => addToCartHandler(product, cartItems, ctxDispatch)}>Add to Cart</Button>}
             </Card.Body>
         </Card>
     )

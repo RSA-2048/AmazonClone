@@ -5,4 +5,13 @@ const getProducts = async (req, res) => {
     res.send(products);
 }
 
-export default getProducts;
+const getProductById = async (req, res) => {
+    const product = await Product.findById(req.params.id);
+    if (product) {
+        res.send(product);
+    } else {
+        res.status(404).send({ message: "Product was not found" });
+    }
+};
+
+export { getProducts, getProductById };
