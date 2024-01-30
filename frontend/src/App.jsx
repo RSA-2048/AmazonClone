@@ -10,6 +10,7 @@ import SignIn from './Pages/SignIn.jsx'
 import { ToastContainer } from 'react-toastify'
 import SignUp from './Pages/SignUp.jsx';
 import DescriptionPage from './Pages/DescriptionPage.jsx';
+import CartPage from './Pages/CartPage.jsx';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
               <Route path="/signin" element={<SignIn />}></Route>
               <Route path="/signup" element={<SignUp />}></Route>
               <Route path="/product/:token" element={<DescriptionPage />}></Route>
+              <Route path="/cart" element={<CartPage />}></Route>
             </Routes>
           </Container>
         </main>

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import NavBar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SearchBox from './SearchBox';
 import { Badge, NavDropdown } from '../../imports';
 import { Store } from '../../Store';
@@ -11,6 +11,8 @@ import { USER_SIGNOUT } from '../../actions';
 const Header = () => {
     const { state, dispatch: ctxDispatch } = useContext(Store);
     const { userInfo, cart: { cartItems } } = state;
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const signOutHandler = () => {
         ctxDispatch({ type: USER_SIGNOUT });
@@ -24,6 +26,9 @@ const Header = () => {
         <header>
             <NavBar bg="dark" variant="dark">
                 <Container>
+                    <Link onClick={() => navigate(-1)}>
+                        {location.pathname !== '/' && <i className="fa fa-arrow-left text-white align-arrow-right"> Back</i>}
+                    </Link>
                     <LinkContainer to="/">
                         <NavBar.Brand>
                             <img src="https://companieslogo.com/img/orig/AMZN_BIG.D-8fb0be81.png?t=1632523695" width={80} alt='Amazon logo' />
