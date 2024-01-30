@@ -2,7 +2,7 @@ import React from 'react'
 import { Card, ListGroup, Button } from '../../imports'
 
 
-const Checkout = ({ cartItems }) => {
+const Checkout = ({ cartItems, checkOutHandler }) => {
     return (
         <Card>
             <Card.Body>
@@ -17,7 +17,7 @@ const Checkout = ({ cartItems }) => {
                     </ListGroup.Item>
                     <ListGroup.Item>
                         <div className='d-grid'>
-                            <Button type='button' disabled={cartItems.length === 0} variant='primary'>Check Out</Button>
+                            <Button type='button' disabled={cartItems.length === 0} variant='primary' onClick={() => checkOutHandler()}>Check Out</Button>
                         </div>
                     </ListGroup.Item>
                 </ListGroup>

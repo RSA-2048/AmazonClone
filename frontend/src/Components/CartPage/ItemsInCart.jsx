@@ -14,7 +14,7 @@ const ItemsInCart = ({ cartItems, updateCartHandler, removeProductHandler }) => 
                         <ListGroup.Item key={item._id} className='mt-1 border'>
                             <Row>
                                 <Col md={8}><img src={item.image} alt={item.title} className='img-fluid rounded img-thumbnail' />
-                                    <Link to={`/products/${item.token}`}>{item.title}</Link>
+                                    <Link to={`/product/${item.token}`}>{item.title}</Link>
                                 </Col>
                                 <Col md={2}><Button onClick={() => updateCartHandler(item, item.quantity - 1)} disabled={item.quantity === 1} variant="light">
                                     <i className='fa fa-minus-circle' /></Button>

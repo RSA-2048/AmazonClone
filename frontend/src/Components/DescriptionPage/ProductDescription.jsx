@@ -16,9 +16,9 @@ const ProductDescription = ({ title, rating, price, description }) => {
                 Price: ${price}
             </ListGroupItem>
             <ListGroupItem>
-                Description: <p className='lead'>${description}</p>
+                Description: <p className='lead' style={{ wordWrap: "break-word" }}>${description}</p>
             </ListGroupItem>
-        </ListGroup>
+        </ListGroup >
     )
 }
 

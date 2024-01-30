@@ -6,11 +6,17 @@ import ItemsInCart from '../Components/CartPage/ItemsInCart';
 import Checkout from '../Components/CartPage/Checkout';
 import { ADD_TO_CART, REMOVE_PRODUCT } from '../actions';
 import { getError } from '../utils';
+import { useNavigate } from 'react-router-dom';
 
 const CartPage = () => {
 
     const { state, dispatch: ctxDispatch } = useContext(Store);
     const { cart: { cartItems } } = state;
+    const navigate = useNavigate();
+
+    const checkOutHandler = () => {
+        navigate("/signin?redirect=/shipping");
+    };
 
     const updateCartHandler = async (product, quantity) => {
         try {
@@ -31,12 +37,15 @@ const CartPage = () => {
         ctxDispatch({ type: REMOVE_PRODUCT, payload: product });
     };
 
+
+
     return (
         <div>
             <Title title={"Shopping Cart"}></Title>
             <Row>
                 <Col md={8}><ItemsInCart cartItems={cartItems} updateCartHandler={updateCartHandler} removeProductHandler={removeProductHandler}></ItemsInCart></Col>
-                <Col md={4}><Checkout cartItems={cartItems}></Checkout></Col>
+                <Col md={4}>
+                    <Checkout cartItems={cartItems} checkOutHandler={checkOutHandler}></Checkout></Col>
             </Row>
         </div>
     )
