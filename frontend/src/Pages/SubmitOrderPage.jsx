@@ -6,8 +6,9 @@ import { getError } from '../utils';
 import OrderSummary from '../Components/Shared/OrderSummary';
 import Title from '../Components/Shared/Title.jsx';
 import CheckoutSteps from '../Components/Shared/CheckoutSteps.jsx';
-import { Col, Row } from '../imports.js';
+import { Col, Row, axios } from '../imports.js';
 import PaymentSummary from '../Components/Shared/PaymentSummary.jsx';
+import { CLEAR_CART } from '../actions.jsx';
 
 const SubmitOrderPage = () => {
     const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -24,6 +25,15 @@ const SubmitOrderPage = () => {
     const submitOrderHandler = async () => {
         try {
             setLoading(true);
+            const orderData = {
+                orderItems: cart.cartItems, shippingAddress: cart.shippingAddress,
+                paymentMethod: cart.paymentMethod, itemsPrice: cart.itemsPrice, shippingPrice: cart.shippingPrice, taxPrice: cart.taxPrice,
+                totalPrice: cart.totalPrice
+            }
+            const { data } = await axios.post("/api/v1/orders", orderData, { headers: { authorization: `Bearer ${userInfo.token}` } });
+            ctxDispatch({ type: CLEAR_CART });
+            localStorage.removeItem("cartItems");
+            navigate(`/order/${data.order._id}`);
             // post request addOrder
             // delete cart from both LS and context (since order is successfuly placed)
             // go to OrderDetails page /id of order
