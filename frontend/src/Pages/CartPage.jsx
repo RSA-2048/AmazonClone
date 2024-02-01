@@ -44,7 +44,7 @@ const CartPage = () => {
             <Title title={"Shopping Cart"}></Title>
             <Row>
                 <Col md={8}><ItemsInCart cartItems={cartItems} updateCartHandler={updateCartHandler} removeProductHandler={removeProductHandler}></ItemsInCart></Col>
-                <Col md={4}>
+                <Col md={4} className='mt-2' style={{ position: 'fixed', right: 15 }}>
                     <Checkout cartItems={cartItems} checkOutHandler={checkOutHandler}></Checkout></Col>
             </Row>
         </div>
