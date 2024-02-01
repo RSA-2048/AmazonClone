@@ -1,8 +1,12 @@
-import React, { useContext, useEffect } from 'react'
-import { Store } from '../Store'
+import React, { useContext, useEffect, useState } from 'react'
+import { Store } from '../Store.jsx'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { getError } from '../utils';
+import OrderSummary from '../Components/Shared/OrderSummary';
+import Title from '../Components/Shared/Title.jsx';
+import CheckoutSteps from '../Components/Shared/CheckoutSteps.jsx';
+import { Col, Row } from '../imports.js';
 
 const SubmitOrderPage = () => {
     const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -16,7 +20,7 @@ const SubmitOrderPage = () => {
         }
     }, []);
 
-    submitOrderHandler = async () => {
+    const submitOrderHandler = async () => {
         try {
             setLoading(true);
             // post request addOrder
@@ -43,7 +47,19 @@ const SubmitOrderPage = () => {
     cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
 
     return (
-        <div>SubmitOrderPage</div>
+        <div>
+            <Title title="Order Summary" />
+            <CheckoutSteps step1 step2 step3 step4 />
+            <h1 className="my-3">Order Summary</h1>
+            <Row>
+                <Col md={8}>
+                    <OrderSummary cart={cart} status={"submitOrder"} />
+                </Col>
+                <Col md={4}>
+                    {/* <Checkout cartItems={cartItems} checkOutHandler={checkOutHandler} /> */}
+                </Col>
+            </Row>
+        </div>
     )
 }
 
