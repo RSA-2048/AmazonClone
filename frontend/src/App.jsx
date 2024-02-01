@@ -13,6 +13,7 @@ import DescriptionPage from './Pages/DescriptionPage.jsx';
 import CartPage from './Pages/CartPage.jsx';
 import ShippingPage from './Pages/ShippingPage.jsx';
 import PaymentPage from './Pages/PaymentPage.jsx';
+import SubmitOrderPage from './Pages/SubmitOrderPage.jsx';
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
               <Route path="/cart" element={<CartPage />}></Route>
               <Route path='/shipping' element={<ShippingPage />}></Route>
               <Route path='/payment' element={<PaymentPage />}></Route>
+              <Route path='/placeorder' element={<SubmitOrderPage />}></Route>
             </Routes>
           </Container>
         </main>
