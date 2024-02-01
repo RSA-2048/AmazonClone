@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import seedRouter from "./routes/seedRouter.js";
 import productRouter from "./routes/productRouter.js";
 import usersRouter from "./routes/usersRouter.js";
+import orderRouter from "./routes/orderRouter.js";
 
 const app = express();
 
@@ -21,6 +22,7 @@ const PORT = process.env.PORT || 8080; // set 8080 for default port name if it d
 app.use('/api/v1/seed', seedRouter);
 app.use("/api/v1/products", productRouter);
 app.use("/api/v1/users", usersRouter);
+app.use("api/v1/orders", orderRouter);
 app.use((err, req, res, next) => { // for when the entered route does not exist
     res.status(500).send({ message: err.message })
 })
