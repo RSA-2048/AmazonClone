@@ -14,15 +14,15 @@ const OrderSummary = ({ cart, status, isDelivered }) => {
                 <Card.Body>
                     <Card.Text>
                         <strong>Name:</strong>
-                        {cart.shippingAddress.fullName} <br />
+                        {" " + cart.shippingAddress.fullName} <br />
                         <strong>Address:</strong>
-                        {cart.shippingAddress.address} <br />
+                        {" " + cart.shippingAddress.address} <br />
                         <strong>City:</strong>
-                        {cart.shippingAddress.city} <br />
+                        {" " + cart.shippingAddress.city} <br />
                         <strong>Postal Code:</strong>
-                        {cart.shippingAddress.postalCode} <br />
+                        {" " + cart.shippingAddress.postalCode} <br />
                         <strong>Country:</strong>
-                        {cart.shippingAddress.country}
+                        {" " + cart.shippingAddress.country}
                     </Card.Text>
                     {status === "submitOrder" ?
                         <Link to={'/shipping'}>Edit</Link> :
@@ -42,7 +42,7 @@ const OrderSummary = ({ cart, status, isDelivered }) => {
                 <Card.Body>
                     <Card.Text>
                         <strong>Method:</strong>
-                        {cart.paymentMethod}
+                        {" " + cart.paymentMethod}
                     </Card.Text>
                     {status === "submitOrder" ?
                         <Link to="/payment">Edit</Link> :

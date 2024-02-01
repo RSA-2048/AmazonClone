@@ -7,6 +7,7 @@ import OrderSummary from '../Components/Shared/OrderSummary';
 import Title from '../Components/Shared/Title.jsx';
 import CheckoutSteps from '../Components/Shared/CheckoutSteps.jsx';
 import { Col, Row } from '../imports.js';
+import PaymentSummary from '../Components/Shared/PaymentSummary.jsx';
 
 const SubmitOrderPage = () => {
     const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -56,7 +57,7 @@ const SubmitOrderPage = () => {
                     <OrderSummary cart={cart} status={"submitOrder"} />
                 </Col>
                 <Col md={4}>
-                    {/* <Checkout cartItems={cartItems} checkOutHandler={checkOutHandler} /> */}
+                    <PaymentSummary loading={loading} submitOrderHandler={submitOrderHandler} status={"submitOrder"} cart={cart}></PaymentSummary>
                 </Col>
             </Row>
         </div>
