@@ -24,4 +24,9 @@ const getProductByToken = async (req, res) => {
     }
 }
 
-export { getProducts, getProductById, getProductByToken };
+const getCategories = async (req, res) => {
+    const categories = await Product.find().distinct("category");
+    res.send(categories);
+}
+
+export { getProducts, getProductById, getProductByToken, getCategories };

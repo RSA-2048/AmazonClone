@@ -14,6 +14,7 @@ import CartPage from './Pages/CartPage.jsx';
 import ShippingPage from './Pages/ShippingPage.jsx';
 import PaymentPage from './Pages/PaymentPage.jsx';
 import SubmitOrderPage from './Pages/SubmitOrderPage.jsx';
+import SearchPage from './Pages/SearchPage.jsx';
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
               <Route path='/shipping' element={<ShippingPage />}></Route>
               <Route path='/payment' element={<PaymentPage />}></Route>
               <Route path='/placeorder' element={<SubmitOrderPage />}></Route>
+              <Route path='/search' element={<SearchPage />}></Route>
             </Routes>
           </Container>
         </main>
