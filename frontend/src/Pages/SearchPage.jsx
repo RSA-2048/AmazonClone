@@ -1,10 +1,12 @@
 import React, { useEffect, useReducer, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import searchPageReducer from '../Reducers/searchPageReducer';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { getError } from '../utils';
+import { getError, getFilterURL } from '../utils';
 import { GET_FAIL, GET_REQUEST, GET_SUCCESS } from '../actions';
+import Title from '../Components/Shared/Title';
+import { Col, Row } from '../imports';
 
 const prices = [
     { name: "$1-$50", value: "1-50" },
@@ -64,7 +66,27 @@ const SearchPage = () => {
 
 
     return (
-        <div>SearchPage</div>
+        <div>
+            <Title title="Search Page" />
+            <Row>
+                <Col md={3}>
+                    <h3>Categories:</h3>
+                    <div>
+                        <ul>
+                            <li>
+                                <Link className={"all" === category ? "text-bold" : ""} to={getFilterURL(search, { category: "all" })}>Any</Link>
+                            </li>
+                            {categories.map((category => (
+                                <li key={category}>
+                                    <Link className={"category" === category ? "text-bold" : ""} to={getFilterURL(search, { category: category })}>{category}</Link>
+                                </li>
+                            )))}
+                        </ul>
+                    </div>
+                </Col>
+                <Col md={9}></Col>
+            </Row>
+        </div>
     )
 }
 
