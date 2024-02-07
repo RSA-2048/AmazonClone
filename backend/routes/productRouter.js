@@ -7,7 +7,7 @@ const productRouter = express.Router();
 
 productRouter.get('/', getProducts);
 productRouter.get('/categories', expressAsyncHandler(getCategories));
-productsRouter.get("/search", expressAsyncHandler(getProductsByQuery));
+productRouter.get("/search", expressAsyncHandler(getProductsByQuery));
 productRouter.get('/token/:token', expressAsyncHandler(getProductByToken));
 productRouter.get('/:id', expressAsyncHandler(getProductById));
 
