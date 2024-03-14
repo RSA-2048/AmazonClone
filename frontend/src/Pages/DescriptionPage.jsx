@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useReducer } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Store } from '../Store.jsx';
 import axios from 'axios';
-import descriptionPageReducer from '../reducers/descriptionPageReducer';
+import descriptionPageReducer from '../Reducers/descriptionPageReducer';
 import { GET_FAIL, GET_REQUEST, GET_SUCCESS } from '../actions';
 import { addToCartHandler, getError } from '../utils.js';
 import Loading from '../Components/Shared/Loading.jsx';
